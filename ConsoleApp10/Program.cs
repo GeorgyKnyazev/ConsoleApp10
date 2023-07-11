@@ -13,8 +13,8 @@ namespace ConsoleApp10
             const ConsoleKey RemoveDossierInMenu = ConsoleKey.D3;
             const ConsoleKey ExitInMenu = ConsoleKey.D4;
 
-            List<string> nameSurnamePersonal = new List<string>();
-            List<string> postPersonal = new List<string>();
+            List<string> namesSurnamesPersonal = new List<string>();
+            List<string> postPersonals = new List<string>();
 
             bool isProgramWork = true;
 
@@ -31,15 +31,15 @@ namespace ConsoleApp10
                 switch (consoleKeyInfo.Key)
                 {
                     case AddDossierInMenu:
-                        AddDossier(nameSurnamePersonal, postPersonal);
+                        AddDossier(namesSurnamesPersonal, postPersonals);
                         break;
 
                     case ShowAllDossierInMenu:
-                        ShowAllDossier(nameSurnamePersonal, postPersonal);
+                        ShowAllDossier(namesSurnamesPersonal, postPersonals);
                         break;
 
                     case RemoveDossierInMenu:
-                        RemoveDossier(nameSurnamePersonal, postPersonal);
+                        RemoveDossier(namesSurnamesPersonal, postPersonals);
                         break;
 
                     case ExitInMenu:
@@ -88,15 +88,18 @@ namespace ConsoleApp10
         {
             Console.Clear();
 
-            int userInput;
+            string userInput;
+            int userInputNumber;
 
             Console.WriteLine("Введите номер досье для удаления: ");
 
-            userInput = Convert.ToInt32(Console.ReadLine());
+            userInput = Console.ReadLine();
 
-            RemoveFromList(userInput, nameSurnamePersonal);
-            RemoveFromList(userInput, postPersonal);
-
+            if (int.TryParse(userInput, out userInputNumber))
+            {
+                RemoveFromList(userInputNumber, nameSurnamePersonal);
+                RemoveFromList(userInputNumber, postPersonal);
+            }
         }
 
         static void RemoveFromList (int dossierNumber , List<string> storageList)
