@@ -13,8 +13,8 @@ namespace ConsoleApp10
             const ConsoleKey RemoveDossierInMenu = ConsoleKey.D3;
             const ConsoleKey ExitInMenu = ConsoleKey.D4;
 
-            List<string> namesSurnamesPersonal = new List<string>();
-            List<string> postPersonals = new List<string>();
+            List<string> fullNames = new List<string>();
+            List<string> posts = new List<string>();
 
             bool isProgramWork = true;
 
@@ -31,15 +31,15 @@ namespace ConsoleApp10
                 switch (consoleKeyInfo.Key)
                 {
                     case AddDossierInMenu:
-                        AddDossier(namesSurnamesPersonal, postPersonals);
+                        AddDossier(fullNames, posts);
                         break;
 
                     case ShowAllDossierInMenu:
-                        ShowAllDossier(namesSurnamesPersonal, postPersonals);
+                        ShowAllDossier(fullNames, posts);
                         break;
 
                     case RemoveDossierInMenu:
-                        RemoveDossier(namesSurnamesPersonal, postPersonals);
+                        RemoveDossier(fullNames, posts);
                         break;
 
                     case ExitInMenu:
@@ -49,15 +49,15 @@ namespace ConsoleApp10
             }
         }
 
-        static void AddDossier(List<string> nameSurnamePersonal, List<string> postPersonal)
+        static void AddDossier(List<string> fullNames, List<string> posts)
         {
             string nameSurnameOutputText = "Введите Имя Фамилию Отчество через пробел: ";
             string postOutputText = "Введите должность: ";
             
             Console.Clear();
 
-            EnterInList(nameSurnameOutputText, nameSurnamePersonal);
-            EnterInList(postOutputText, postPersonal);
+            EnterInList(nameSurnameOutputText, fullNames);
+            EnterInList(postOutputText, posts);
         }
 
         static void EnterInList(string outputText, List<string> storageList)
@@ -70,21 +70,21 @@ namespace ConsoleApp10
             storageList.Add(userInput);
         }
 
-        static void ShowAllDossier(List<string> nameSurnamePersonal, List<string> postPersonal)
+        static void ShowAllDossier(List<string> fullNames, List<string> posts)
         {
             Console.Clear();
 
-            for (int i = 0; i < nameSurnamePersonal.Count; i++)
+            for (int i = 0; i < fullNames.Count; i++)
             {
                 Console.Write(i + "- ");
-                Console.Write(nameSurnamePersonal[i] + " - ");
-                Console.WriteLine(postPersonal[i] + ".");
+                Console.Write(fullNames[i] + " - ");
+                Console.WriteLine(posts[i] + ".");
             }
 
             Console.ReadKey();
         }
 
-        static void RemoveDossier(List<string> nameSurnamePersonal, List<string> postPersonal)
+        static void RemoveDossier(List<string> fullNames, List<string> posts)
         {
             Console.Clear();
 
@@ -97,8 +97,8 @@ namespace ConsoleApp10
 
             if (int.TryParse(userInput, out userInputNumber))
             {
-                RemoveFromList(userInputNumber, nameSurnamePersonal);
-                RemoveFromList(userInputNumber, postPersonal);
+                RemoveFromList(userInputNumber, fullNames);
+                RemoveFromList(userInputNumber, posts);
             }
         }
 
